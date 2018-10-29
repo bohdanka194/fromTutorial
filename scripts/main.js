@@ -1,8 +1,27 @@
 
     console.log( "ready!" );
 
+    var myButtin = document.querySelector('button');
     var myHeading = document.querySelector('h1');
     myHeading.textContent = 'Hello world!';
+    function setUserName(){
+        var myName = prompt("Please enter your name.");
+        localStorage.setItem('name',myName);
+        myHeading.textContent='Mozilla is cool, '+myName;
+    }
+
+    if(!localStorage.getItem('name')){
+        setUserName();
+    } else{
+        var storedName = localStorage.getItem('name');
+        myHeading.textContent = 'Mozills is great, '+storedName;
+    }
+
+    myButtin.onclick = function(){
+        setUserName();
+    }
+
+   
 
     // your code 
     document.querySelector('.click-on-me').onclick = function() {
